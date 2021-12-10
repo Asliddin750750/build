@@ -30,3 +30,10 @@ class ProductsView(APIView):
             'success': True,
             'data': serializer.data
         }, status=status.HTTP_200_OK)
+
+    def post(self, request):
+        Product(brand_id=request.data.get('brand'), image=request.data.get('image')).save()
+        return Response({
+            'success': True,
+            'data': "AAA"
+        }, status=status.HTTP_200_OK)
